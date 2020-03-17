@@ -1,0 +1,18 @@
+{
+  "produto": [
+    {
+      "titulo": "SAMSUNG A20",
+      "preco": 799.99,
+      "categoria": "CELULAR",
+      "descricao": "SM-A205G/DS",
+      "id": 1
+    },
+    {
+      "titulo": "SAMSUNG A10",
+      "preco": 629.1,
+      "categoria": "CELULAR",
+      "descricao": "6.2 polegadas",
+      "id": 2
+    }
+  ]
+}
