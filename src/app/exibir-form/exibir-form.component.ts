@@ -3,6 +3,7 @@ import { exibirFormService } from './exibir-form.service';
 import { Produto } from './exibir-form';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Routes, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-exibir-form',
@@ -19,7 +20,8 @@ export class ExibirFormComponent implements OnInit {
 
   constructor(public service: exibirFormService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private produtoService: exibirFormService
   ) {
     this.produtoCodigo = new Produto();
     this.codigo = 0;
@@ -27,24 +29,40 @@ export class ExibirFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carregarProdutos();
+    this.getProdutos();
+  }
+    // defini se um produto será criado ou atualizado
+    salvarProduto(form: NgForm) {
+      if (this.produto.id !== undefined) {
+        this.produtoService.updateProdutos(this.produto).subscribe(() => {
+          this.cleanForm(form);
+        });
+      } else {
+        this.produtoService.saveProdutos(this.produto).subscribe(() => {
+          this.cleanForm(form);
+        });
+      }
+    }
+    getProdutos() {
+      this.produtoService.getProdutos().subscribe((produto: Produto[]) => {
+        this.produtos = produto;
+      });
+    }
+  
+    deleteProdutos(produto: Produto) {
+      this.produtoService.deleteProdutos(produto).subscribe(() => {
+        this.getProdutos();
+      });
+    }
+    editProduto(produto: Produto) {
+      this.produto = { ...produto };
+    }
+    
+    cleanForm(form: NgForm) {
+      this.getProdutos();
+      form.resetForm();
+      this.produto = {} as Produto;
+    }
+  
   }
 
-  public carregarProdutos() {
-    return this.service.listarProdutos().subscribe(res => {
-      this.produtos = res;
-      this.carregarProdutos();
-    })
-  }
-  public salvar() {
-    this.service.gravar(this.produto).subscribe(res => {
-      console.log(`Produto Gravado ...`);
-      this.carregarProdutos();
-    })
-  }
-  onDelete(produto) {
-  }
-  onEdit(id) {
-    this.router.navigate(['editar', id]), { relativeTo: this.route };
-  }
-}

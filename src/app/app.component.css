@@ -3,3 +3,25 @@
     background-image:url('C:/Users/RICARDOSCHISZLERLOUR/Desktop/ProjetoAngularCLI/FormularioCloudDog/src/assets/img/template.png');
     background-position:50% 50%;
   }
+  mat-sidenav-container {
+    height: 100%;
+  }
+  mat-sidenav, mat-sidenav-content {
+    padding: 16px;
+  }
+  mat-sidenav {
+    background-color: gray;
+    width: 200px;
+  }
+
+  .container {
+    margin-top: 30px;
+}
+
+.add-prod {
+    margin-bottom: 30px;
+}
+
+.btn-add-prod {
+    margin-right: 10px;
+}

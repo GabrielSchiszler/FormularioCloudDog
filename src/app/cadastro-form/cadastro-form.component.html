@@ -1,22 +1,38 @@
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
       <label for="lbltitulo">Titulo: </label>
-      <input type="text" class="form-control" [(ngModel)]="produto.titulo" id="titulo" placeholder="Titulo" name="titulo" required>
+      <input type="text" class="form-control" [(ngModel)]="produto.titulo" id="titulo" placeholder="Titulo" name="titulo" #titulo="ngModel" required>
+      <div *ngIf="!titulo.valid && titulo.touched"
+      class="alert alert-danger" role="alert">   
+        Nome é obrigatório.
+      </div>
     </div>
     <div class="form-group">
       <label for="lblpreco">Preço: </label>
-      <input type="number" class="form-control" [(ngModel)]="produto.preco" id="preco" placeholder="Preço" name="preco"required>
+      <input type="number" class="form-control" [(ngModel)]="produto.preco" id="preco" placeholder="Preço" name="preco=" #preco="ngModel" required>
+      <div *ngIf="!preco.valid && preco.touched"
+      class="alert alert-danger" role="alert">
+        Preço é obrigatório.
+      </div>
     </div>  
     <div class="form-group">
       <label for="lblcategoria">Categoria: </label>
-      <input type="text" class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria"required>
+      <input type="text" class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
+      <div *ngIf="!categoria.valid && categoria.touched"
+      class="alert alert-danger" role="alert">
+        Categoria é obrigatório.
+      </div>
     </div>
     <div class="form-group">
       <label for="lbldescricao">Descrição: </label>
-      <input type="text" class="form-control" [(ngModel)]="produto.descricao" id="descricao" placeholder="Descrição" name="descricao" required>
+      <input type="text" class="form-control" [(ngModel)]="produto.descricao" id="descricao" placeholder="Descrição" name="descricao" #descricao="ngModel" required>
+      <div *ngIf="!descricao.valid && descricao.touched"
+      class="alert alert-danger" role="alert">
+        Descrição é obrigatório.
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="salvar()">Cadastrar</button>
-    <button type="reset" class="btn btn-primary">Cancelar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="salvar()">Cadastrar</button>
+    <button type="reset" class="btn btn-primary">Limpar</button>
 </form>
 <br>
    <h3 *ngIf ="adicionado">{{confirmationString}} </h3>

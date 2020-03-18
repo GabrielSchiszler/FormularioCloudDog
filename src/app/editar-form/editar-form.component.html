@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card add-car">
+        <h5 class="card-header">ATUALIZAR PRODUTO</h5>
+        <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+                <div class="form-group" *ngIf="produto">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" id="titulo" name="titulo" required  class="form-control" placeholder="Digite o titulo">
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <input type="number" id="preco" name="preco" required placeholder="Digite o preço" class="form-control">
+                 
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <input type="number" id="categoria" name="categoria" required class="form-control" placeholder="Digite a categoria"> 
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao" name="descricao" required class="form-control" placeholder="Digite a descrição">    
+                </div>
+                <button type="submit" class="btn btn-primary btn-add-prod" (click)="editProduto(produto)">Salvar</button>
+                <button type="reset" class="btn btn-secondary btn-add-prod">Cancelar</button>
+                <button type="button" class="btn btn-danger btn-add-prod" routerLink="/exibirForm">Voltar</button>
+            </form>
+        </div>
+    </div>
+</div>

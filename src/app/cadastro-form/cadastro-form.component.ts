@@ -15,6 +15,11 @@ export class CadastroFormComponent implements OnInit {
   produtoCodigo : Produto;
   message : string;
 
+  onSubmit(form){
+    console.log(form);
+  }
+
+
   constructor(public service: cadastroFormService) {   
     this.produtoCodigo = new Produto();
     this.codigo = 0;
@@ -24,6 +29,7 @@ export class CadastroFormComponent implements OnInit {
    adicionado: boolean = false;
 
   ngOnInit(): void {
+
     this.carregarProdutos();
   }
 

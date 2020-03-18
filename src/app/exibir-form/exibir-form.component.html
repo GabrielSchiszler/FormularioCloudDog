@@ -21,20 +21,22 @@
             </thead>
             <tbody>
                 <tr *ngFor="let produto of produtos">
+                    
                     <td>{{produto.id}}</td>
                     <td>{{produto.titulo}}</td>
-                    <td>{{produto.preco}}</td>
+                    <td>{{produto.preco | currency}}</td>
                     <td>{{produto.categoria}}</td>
                     <td>{{produto.descricao}}</td>
                     <td>
                         <span class="float-right">
-                            <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(produto.id)">
+                            <button type='button' class="btn btn-primary btn-sm"
+                                [routerLink]="['/editarForm', produto.id]">
                                 ALTERAR
                             </button>
-
-
-                            <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(produto)">
-                                EXCLUIR
+                            
+                            <button type='button' class="btn btn-danger btn-sm" 
+                                (click)="deleteProdutos(produto)">
+                                DELETAR
                             </button>
                         </span>
                     </td>
@@ -43,11 +45,3 @@
         </table>
     </div>
 </div>
-
-<ng-template #deleteModal>
-  <div class="modal-body text-center">
-    <p>Confirmar?</p>
-    <button type="button" class="btn btn-default" >Yes</button>
-    <button type="button" class="btn btn-primary" >No</button>
-  </div>
-</ng-template>
