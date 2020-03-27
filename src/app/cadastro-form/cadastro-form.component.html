@@ -1,4 +1,5 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <h1>CADASTRO DE PRODUTOS</h1>
     <div class="form-group">
       <label for="lbltitulo">Titulo: </label>
       <input type="text" class="form-control" [(ngModel)]="produto.titulo" id="titulo" placeholder="Titulo" name="titulo" #titulo="ngModel" required>
@@ -17,7 +18,11 @@
     </div>  
     <div class="form-group">
       <label for="lblcategoria">Categoria: </label>
-      <input type="text" class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
+      <select class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
+        <option *ngFor="let cadastro of cadastros" value={{cadastro.categoria}}>
+          {{cadastro.categoria}}
+        </option>
+      </select>
       <div *ngIf="!categoria.valid && categoria.touched"
       class="alert alert-danger" role="alert">
         Categoria é obrigatório.
@@ -31,7 +36,7 @@
         Descrição é obrigatório.
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="salvar()">Cadastrar</button>
+      <a routerLink="/exibirForm"><button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="salvar()" >Cadastrar</button></a>
     <button type="reset" class="btn btn-primary">Limpar</button>
 </form>
 <br>

@@ -1,0 +1,44 @@
+<h1>CADASTRAMENTO DE CATEGORIA</h1>
+<form #f="ngForm">
+    <div class="form-group">
+        <label for="lbltitulo">Categoria </label>
+        <input type="text" class="form-control" [(ngModel)]="cadastro.categoria" id="categoria" placeholder="Categoria"
+            name="categoria" #categoria="ngModel" required>
+        <div *ngIf="!categoria.valid && categoria.touched">
+        </div>
+    </div>
+    <a routerLink="/categoriaForm"><button type="submit" class="btn btn-primary" [disabled]="!f.valid"
+            (click)="salvarcat()">Cadastrar</button></a>
+    <button type="reset" class="btn btn-primary">Limpar</button>
+</form>
+<br>
+<div class="card">
+    <div class="card-header">
+        <div class="float-left">
+            <h1>CATEGORIAS CADASTRADAS</h1>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CATEGORIA</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cadastro of cadastros">
+                        <td>{{cadastro.id}}</td>
+                        <td>{{cadastro.categoria}}</td>
+                        <td>
+                            <span class="float-right">
+                                <button type='button' class="btn btn-danger btn-sm"
+                                (click)="deleteCategorias(cadastro)">
+                                    DELETAR
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

@@ -5,3 +5,6 @@ export class Produto{
     categoria: string;
     descricao: string;
 }
+export class Cadastro{
+    categoria: string;
+}

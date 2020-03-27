@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
+  
   produto = {} as Produto;
   produtos: Produto[];
 

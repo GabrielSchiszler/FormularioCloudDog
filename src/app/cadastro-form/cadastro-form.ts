@@ -4,5 +4,7 @@ export class Produto{
     preco: number;
     categoria: string;
     descricao: string;
-
+}
+export class Cadastro{
+    categoria: string;
 }

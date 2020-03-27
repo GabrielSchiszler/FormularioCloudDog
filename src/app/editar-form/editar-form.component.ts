@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { editarFormService } from './editar-form.service';
-import { Produto } from '../cadastro-form/cadastro-form';
-import { timeoutWith } from 'rxjs/operators';
+import { Produto, Cadastro } from '../editar-form/editar-form';
 
 @Component({
   selector: 'app-editar-form',
@@ -15,8 +14,10 @@ export class EditarFormComponent implements OnInit {
   produtos: Produto[] = [];
   produtoCodigo: Produto;
   message: string;
-  id: string;
-  request: Produto[];
+  cadastro: Cadastro;
+  cadastros: Cadastro[] = [];
+  categoriaCodigo: Cadastro;
+
   constructor(public service: editarFormService,
     private router: Router,
     private route: ActivatedRoute
@@ -24,15 +25,17 @@ export class EditarFormComponent implements OnInit {
     this.produtoCodigo = new Produto();
     this.codigo = 0;
     this.produto = new Produto();
-    
-  }
-
-  ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getProdutosID(this.id).subscribe(res =>{
-    })
   }
   editProduto(produto: Produto) {
     this.produto = { ...produto };
+  }
+
+  ngOnInit(): void {
+    this.carregarCategorias();
+  }
+  public carregarCategorias(){
+    return this.service.listarCategoria().subscribe(res=>{
+      this.cadastros = res;
+    })
   }
 }

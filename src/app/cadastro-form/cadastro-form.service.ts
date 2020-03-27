@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
-import { Produto } from './cadastro-form';
+import { Produto, Cadastro } from './cadastro-form';
 import { Observable } from 'rxjs';
 
 
@@ -9,16 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class cadastroFormService{
     constructor(private _httpClient: HttpClient) {}
-    private API : string = "http://localhost:3000/produto"; 
+    private API : string = "http://localhost:3000/produto";
+    private APII : string = "http://localhost:3000/cadastro"
 
-    buscar(id : number):Observable<Produto>
-    {
-        return this._httpClient.get<Produto>(`http://localhost:3000/produto)${id}`);
+    listarCategoria ():Observable<Cadastro[]>{
+        return this._httpClient.get<Cadastro[]>(this.APII);
     }
-    listarProdutos ():Observable<Produto[]>{
-        return this._httpClient.get<Produto[]>(this.API);
-    }
-
     gravar(produto : Produto):Observable<Produto>{
         return this._httpClient.post<Produto>(this.API, produto); 
     }

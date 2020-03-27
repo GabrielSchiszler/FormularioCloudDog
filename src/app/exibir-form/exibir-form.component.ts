@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChildren, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { exibirFormService } from './exibir-form.service';
 import { Produto } from './exibir-form';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, Routes, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-exibir-form',
@@ -31,18 +29,6 @@ export class ExibirFormComponent implements OnInit {
   ngOnInit(): void {
     this.getProdutos();
   }
-    // defini se um produto será criado ou atualizado
-    salvarProduto(form: NgForm) {
-      if (this.produto.id !== undefined) {
-        this.produtoService.updateProdutos(this.produto).subscribe(() => {
-          this.cleanForm(form);
-        });
-      } else {
-        this.produtoService.saveProdutos(this.produto).subscribe(() => {
-          this.cleanForm(form);
-        });
-      }
-    }
     getProdutos() {
       this.produtoService.getProdutos().subscribe((produto: Produto[]) => {
         this.produtos = produto;
@@ -54,15 +40,5 @@ export class ExibirFormComponent implements OnInit {
         this.getProdutos();
       });
     }
-    editProduto(produto: Produto) {
-      this.produto = { ...produto };
-    }
-    
-    cleanForm(form: NgForm) {
-      this.getProdutos();
-      form.resetForm();
-      this.produto = {} as Produto;
-    }
-  
   }
 
