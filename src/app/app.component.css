@@ -2,7 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 .image{
   height:54.1em; background-size:cover; width:auto;
-  background-image:url('C:/Users/RICARDOSCHISZLERLOUR/Desktop/ProjetoAngularCLI/FormularioCloudDog/src/assets/img/fundolaranja.jpg');
+  background-image: url('/assets/img/fundolaranja.jpg');
   background-position:50% 50%;
 }
 
@@ -17,20 +17,20 @@
 .btn-add-prod {
     margin-right: 10px;
 }
-/* The sidebar menu */
+
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 6.85%; /* Stay at the top */
+  height: 100%;
+  width: 160px;
+  position: fixed; 
+  z-index: 1; 
+  top: 6.85%; 
   left: 0;
   background-color: rgba(0, 0, 0, 0.39);
-  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-x: hidden; 
   padding-top: 20px;
 }
 
-/* The navigation menu links */
+
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -39,18 +39,17 @@
   display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
+
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
-/* Style page content */
+
 .main {
-  margin-left: 160px; /* Same as the width of the sidebar */
+  margin-left: 160px; 
   padding: 0px 10px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ɵInternalFormsSharedModule}  from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroFormComponent } from './cadastro-form/cadastro-form.component';
