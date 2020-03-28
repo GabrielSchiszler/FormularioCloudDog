@@ -27,7 +27,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.39);
   overflow-x: hidden; 
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 
@@ -51,6 +51,6 @@
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 10px;}
   .sidenav a {font-size: 18px;}
 }

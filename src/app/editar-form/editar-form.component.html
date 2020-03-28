@@ -1,49 +1,44 @@
-<div class="container">
-    <div class="card add-car">
-        <h5 class="card-header">ATUALIZAR PRODUTO</h5>
-        <div class="card-body">
-            <form id="add-form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
-                <div class="form-group">
-                    <label for="titulo">Titulo</label>
-                    <input type="text" [(ngModel)]="produto.titulo" id="titulo" name="titulo" #titulo="ngModel" required
-                        class="form-control" [ngClass]="{ 'is-invalid': f.submitted }" placeholder="Digite o titulo">
-                    <div *ngIf="f.submitted " class="invalid-feedback">
-                        <div *ngIf="titulo.errors.required">Titulo é obrigatório</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="preco">Preço</label>
-                    <input type="number" [(ngModel)]="produto.preco" id="preco" name="preco" #preco="ngModel" required
-                        class="form-control" [ngClass]="{ 'is-invalid': f.submitted && preco.invalid }"
-                        placeholder="Digite o preço">
-                    <div *ngIf="f.submitted && preco.invalid" class="invalid-feedback">
-                        <div *ngIf="preco.errors.required">Preço é obrigatória</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lblcategoria">Categoria: </label>
-                    <select class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
-                      <option *ngFor="let cadastro of cadastros" value={{cadastro.categoria}}>
-                        {{cadastro.categoria}}
-                      </option>
-                    </select>
-                    <div *ngIf="!categoria.valid && categoria.touched"
-                    class="alert alert-danger" role="alert">
-                      Categoria é obrigatório.
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="descricao">Descrição</label>
-                    <input type="text" [(ngModel)]="produto.descricao" id="descricao" name="descricao"
-                        #descricao="ngModel" required class="form-control"
-                        [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }" placeholder="Digite a descrição">
-                    <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
-                        <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-add-prod" click="editProduto(produto)">Editar</button>
-                <button type="reset" class="btn btn-secondary btn-add-prod">Limpar</button>
-            </form>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h1>CADASTRO DE PRODUTOS</h1>
+      <div class="form-group">
+        <label for="lbltitulo">Titulo: </label>
+        <input type="text" class="form-control" [(ngModel)]="produto.titulo" id="titulo" placeholder="Titulo" name="titulo" #titulo="ngModel" required>
+        <div *ngIf="!titulo.valid && titulo.touched"
+        class="alert alert-danger" role="alert">   
+          Nome é obrigatório.
         </div>
-    </div>
-</div>
+      </div>
+      <div class="form-group">
+        <label for="lblpreco">Preço: </label>
+        <input type="number" class="form-control" [(ngModel)]="produto.preco" id="preco" placeholder="Preço" name="preco=" #preco="ngModel" required>
+        <div *ngIf="!preco.valid && preco.touched"
+        class="alert alert-danger" role="alert">
+          Preço é obrigatório.
+        </div>
+      </div>  
+      <div class="form-group">
+        <label for="lblcategoria">Categoria: </label>
+        <select class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
+          <option *ngFor="let categoria of categorias" value={{categoria.categoria}}>
+            {{categoria.categoria}}
+          </option>
+        </select>
+        <div *ngIf="!categoria.valid && categoria.touched"
+        class="alert alert-danger" role="alert">
+          Categoria é obrigatório.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lbldescricao">Descrição: </label>
+        <input type="text" class="form-control" [(ngModel)]="produto.descricao" id="descricao" placeholder="Descrição" name="descricao" #descricao="ngModel" required>
+        <div *ngIf="!descricao.valid && descricao.touched"
+        class="alert alert-danger" role="alert">
+          Descrição é obrigatório.
+        </div>
+      </div>
+        <a routerLink="/produtos"><button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="editProduto(produto)" >Alterar</button></a>
+      <button type="reset" class="btn btn-primary">Limpar</button>
+  </form>
+  <br>
+     <h3 *ngIf ="adicionado">{{confirmationString}} </h3>
+  

@@ -1,4 +1,4 @@
-export class Cadastro{
+export class Categorias{
     id: number;
     categoria: string;
 }

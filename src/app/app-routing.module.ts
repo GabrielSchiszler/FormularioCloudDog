@@ -7,11 +7,11 @@ import { CategoriaFormComponent } from './categoria-form/categoria-form.componen
 
 
 const routes: Routes = [
-  { path: 'cadastroForm', component: CadastroFormComponent},
-  { path: 'exibirForm', component: ExibirFormComponent},
-  { path: 'editarForm/:id', component: EditarFormComponent},
-  { path: 'categoriaForm', component: CategoriaFormComponent},
-  { path: '', pathMatch: 'full', redirectTo: 'exibirForm'}
+  { path: 'produtos/novo', component: CadastroFormComponent},
+  { path: 'produtos', component: ExibirFormComponent},
+  { path: 'produtos/:id', component: EditarFormComponent},
+  { path: 'categorias', component: CategoriaFormComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'produtos'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -4,7 +4,7 @@
             <h1>PRODUTOS</h1>
         </div>
         <div class="float-right">
-            <button type="button" class="btn btn-primary" [routerLink]="['/cadastroForm']">Novo Produto</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/produtos/novo']">Novo Produto</button>
         </div>
     </div>
     <div class="card-body">
@@ -30,7 +30,7 @@
                     <td>
                         <span class="float-right">
                             <button type='button' class="btn btn-primary btn-sm"
-                                [routerLink]="['/editarForm', produto.id]">                           
+                                [routerLink]="['/produtos/', produto.id]">                           
                                 ALTERAR
                             </button>
                             

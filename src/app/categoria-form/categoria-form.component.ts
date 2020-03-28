@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { categoriaFormService } from './categoria-form.service';
-import { Cadastro } from './categoria-form';
+import { Categorias } from './categoria-form';
 
 @Component({
   selector: 'app-categoria-form',
@@ -9,10 +9,10 @@ import { Cadastro } from './categoria-form';
   preserveWhitespaces: true
 })
 export class CategoriaFormComponent implements OnInit {
-  cadastro: Cadastro;
-  cadastros: Cadastro[] = [];
+  categoria: Categorias;
+  categorias: Categorias[] = [];
   codigo: number = 0;
-  categoriaCodigo: Cadastro;
+  categoriaCodigo: Categorias;
   message: string;
 
   onSubmit(form) {
@@ -20,9 +20,9 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   constructor(public service: categoriaFormService) {
-    this.categoriaCodigo = new Cadastro();
+    this.categoriaCodigo = new Categorias();
     this.codigo = 0;
-    this.cadastro = new Cadastro();
+    this.categoria = new Categorias();
   }
   adicionado: boolean = false;
 
@@ -31,26 +31,26 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   public salvarcat() {
-    this.service.gravarcat(this.cadastro).subscribe(res => {
+    this.service.gravarcat(this.categoria).subscribe(res => {
       this.adicionado = true;
-      this.cadastro = new Cadastro();
+      this.categoria = new Categorias();
       this.carregarCategorias();
       alert('CATEGORIA CADASTRADO COM SUCESSO!');
     })
   }
   public carregarCategorias() {
     return this.service.listarCategorias().subscribe(res => {
-      this.cadastros = res;
+      this.categorias = res;
     })
   }
-  deleteCategorias(cadastro: Cadastro) {
-    this.service.deleteCategorias(cadastro).subscribe(() => {
+  deleteCategorias(categoria: Categorias) {
+    this.service.deleteCategorias(categoria).subscribe(() => {
       this.getCategorias();
     });
   }
   getCategorias() {
-    this.service.getCategorias().subscribe((cadastro: Cadastro[]) => {
-      this.cadastros = cadastro;
+    this.service.getCategorias().subscribe((categoria: Categorias[]) => {
+      this.categorias = categoria;
     });
   }
 }

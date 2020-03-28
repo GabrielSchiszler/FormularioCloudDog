@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { editarFormService } from './editar-form.service';
-import { Produto, Cadastro } from '../editar-form/editar-form';
+import { Produtos, Categorias } from './editar-form';
 
 @Component({
   selector: 'app-editar-form',
@@ -9,33 +9,40 @@ import { Produto, Cadastro } from '../editar-form/editar-form';
   styleUrls: ['./editar-form.component.css']
 })
 export class EditarFormComponent implements OnInit {
-  produto: Produto;
+  produto: Produtos;
   codigo: number = 0;
-  produtos: Produto[] = [];
-  produtoCodigo: Produto;
+  produtos: Produtos[] = [];
+  produtoCodigo: Produtos;
   message: string;
-  cadastro: Cadastro;
-  cadastros: Cadastro[] = [];
-  categoriaCodigo: Cadastro;
+  categoria: Categorias;
+  categorias: Categorias[] = [];
+  categoriaCodigo: Categorias;
 
   constructor(public service: editarFormService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.produtoCodigo = new Produto();
+    this.produtoCodigo = new Produtos();
     this.codigo = 0;
-    this.produto = new Produto();
+    this.produto = new Produtos();
   }
-  editProduto(produto: Produto) {
+  onSubmit(form){
+    console.log(form);
+  }
+  confirmationString : String = "Novo produto foi adicionado";
+  adicionado: boolean = false;
+
+  editProduto(produto: Produtos) {
     this.produto = { ...produto };
   }
 
   ngOnInit(): void {
     this.carregarCategorias();
   }
+  
   public carregarCategorias(){
     return this.service.listarCategoria().subscribe(res=>{
-      this.cadastros = res;
+      this.categorias = res;
     })
   }
 }

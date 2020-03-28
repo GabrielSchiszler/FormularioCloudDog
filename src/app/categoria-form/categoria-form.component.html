@@ -1,13 +1,13 @@
 <h1>CADASTRAMENTO DE CATEGORIA</h1>
 <form #f="ngForm">
     <div class="form-group">
-        <label for="lbltitulo">Categoria </label>
-        <input type="text" class="form-control" [(ngModel)]="cadastro.categoria" id="categoria" placeholder="Categoria"
-            name="categoria" #categoria="ngModel" required>
-        <div *ngIf="!categoria.valid && categoria.touched">
+        <label for="lbltitulo">Categoria</label>
+        <input type="text" class="form-control" [(ngModel)]="categoria.categoria" id="Categoria" placeholder="Categoria"
+            name="Categoria" #Categoria="ngModel" required>
+        <div *ngIf="!Categoria.valid && !Categoria.touched">
         </div>
     </div>
-    <a routerLink="/categoriaForm"><button type="submit" class="btn btn-primary" [disabled]="!f.valid"
+    <a routerLink="/categorias"><button type="submit" class="btn btn-primary" [disabled]="!f.valid"
             (click)="salvarcat()">Cadastrar</button></a>
     <button type="reset" class="btn btn-primary">Limpar</button>
 </form>
@@ -27,13 +27,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let cadastro of cadastros">
-                        <td>{{cadastro.id}}</td>
-                        <td>{{cadastro.categoria}}</td>
+                    <tr *ngFor="let categoria of categorias">
+                        <td>{{categoria.id}}</td>
+                        <td>{{categoria.categoria}}</td>
                         <td>
                             <span class="float-right">
                                 <button type='button' class="btn btn-danger btn-sm"
-                                (click)="deleteCategorias(cadastro)">
+                                (click)="deleteCategorias(categoria)">
                                     DELETAR
                                 </button>
                             </span>

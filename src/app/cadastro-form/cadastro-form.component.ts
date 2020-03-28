@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cadastroFormService } from './cadastro-form.service';
-import { Produto, Cadastro } from './cadastro-form';
+import { Produtos, Categorias } from './cadastro-form';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -9,13 +9,13 @@ import { Produto, Cadastro } from './cadastro-form';
   preserveWhitespaces: true
 })
 export class CadastroFormComponent implements OnInit {
-  produto: Produto;
-  cadastro: Cadastro;
-  cadastros: Cadastro[] = [];
+  produto: Produtos;
+  categoria: Categorias;
+  categorias: Categorias[] = [];
   codigo: number = 0;
-  produtos: Produto[] = [];
-  categoriaCodigo: Cadastro;
-  produtoCodigo: Produto;
+  produtos: Produtos[] = [];
+  categoriaCodigo: Categorias;
+  produtoCodigo: Produtos;
   message : string;
 
   onSubmit(form){
@@ -24,11 +24,11 @@ export class CadastroFormComponent implements OnInit {
 
 
   constructor(public service: cadastroFormService) {   
-    this.produtoCodigo = new Produto();
-    this.categoriaCodigo = new Cadastro();
+    this.produtoCodigo = new Produtos();
+    this.categoriaCodigo = new Categorias();
     this.codigo = 0;
-    this.produto = new Produto();
-    this.cadastro = new Cadastro();
+    this.produto = new Produtos();
+    this.categoria = new Categorias();
    }
    confirmationString : String = "Novo produto foi adicionado";
    adicionado: boolean = false;
@@ -38,13 +38,13 @@ export class CadastroFormComponent implements OnInit {
   }
   public carregarCategorias(){
     return this.service.listarCategoria().subscribe(res=>{
-      this.cadastros = res;
+      this.categorias = res;
     })
   }
   public salvar(){
     this.service.gravar(this.produto).subscribe(res=>{
       this.adicionado = true;
-      this.produto = new Produto();
+      this.produto = new Produtos();
       alert('PRODUTO CADASTRADO COM SUCESSO!');
     })
   } 

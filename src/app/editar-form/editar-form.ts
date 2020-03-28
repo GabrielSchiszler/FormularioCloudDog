@@ -1,10 +1,10 @@
-export class Produto{
+export class Produtos{
     id: number;
     titulo: string;
     preco: number;
     categoria: string;
     descricao: string;
 }
-export class Cadastro{
+export class Categorias{
     categoria: string;
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Cadastro } from './categoria-form';
+import { Categorias } from './categoria-form';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -13,22 +12,21 @@ export class categoriaFormService {
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
-    private API: string = "http://localhost:3000/cadastro";
-    private readonly APII = `${environment.API}produto`;
+    private API: string = "http://localhost:3000/categorias";
 
-    gravarcat(categoria: Cadastro): Observable<Cadastro> {
-        return this._httpClient.post<Cadastro>(this.API, categoria);
+    gravarcat(categoria: Categorias): Observable<Categorias> {
+        return this._httpClient.post<Categorias>(this.API, categoria);
     }
-    listarCategorias(): Observable<Cadastro[]> {
-        return this._httpClient.get<Cadastro[]>(this.API);
+    listarCategorias(): Observable<Categorias[]> {
+        return this._httpClient.get<Categorias[]>(this.API);
     }
-    getCategorias(): Observable<Cadastro[]> {
-        return this._httpClient.get<Cadastro[]>(this.API)
+    getCategorias(): Observable<Categorias[]> {
+        return this._httpClient.get<Categorias[]>(this.API)
     }
-    deleteCategorias(cadastro: Cadastro) {
-        return this._httpClient.delete<Cadastro>(this.API + '/' + cadastro.id, this.httpOptions)
+    deleteCategorias(categoria: Categorias) {
+        return this._httpClient.delete<Categorias>(this.API + '/' + categoria.id, this.httpOptions)
     }
-    getCategoriasID(id: number): Observable<Cadastro> {
-        return this._httpClient.get<Cadastro>(this.API + '/' + id)
+    getCategoriasID(id: number): Observable<Categorias> {
+        return this._httpClient.get<Categorias>(this.API + '/' + id)
     }
 }

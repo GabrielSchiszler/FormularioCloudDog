@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from './cadastro-form/cadastro-form';
+import { Produtos } from './cadastro-form/cadastro-form';
 import { exibirFormService } from './exibir-form/exibir-form.service';
 import { NgForm } from '@angular/forms';
 
@@ -11,8 +11,8 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
 
   
-  produto = {} as Produto;
-  produtos: Produto[];
+  produto = {} as Produtos;
+  produtos: Produtos[];
 
   constructor(private produtoService: exibirFormService) {}
   

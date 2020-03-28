@@ -1,24 +1,4 @@
 {
-  "produto": [
-    {
-      "titulo": "CloudDog",
-      "preco": 2,
-      "categoria": "CELULARES",
-      "descricao": "Estágio",
-      "id": 1
-    },
-    {
-      "titulo": "teste",
-      "preco": 1,
-      "categoria": "CELULARES",
-      "descricao": "2",
-      "id": 2
-    }
-  ],
-  "cadastro": [
-    {
-      "categoria": "CELULARES",
-      "id": 1
-    }
-  ]
+  "Produtos": [],
+  "Categorias": []
 }

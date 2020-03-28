@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { exibirFormService } from './exibir-form.service';
-import { Produto } from './exibir-form';
+import { Produtos } from './exibir-form';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   preserveWhitespaces: true
 })
 export class ExibirFormComponent implements OnInit {
-  produto: Produto;
+  produto: Produtos;
   codigo: number = 0;
-  produtos: Produto[] = [];
-  produtoCodigo: Produto;
+  produtos: Produtos[] = [];
+  produtoCodigo: Produtos;
   message: string;
 
   constructor(public service: exibirFormService,
@@ -21,21 +21,21 @@ export class ExibirFormComponent implements OnInit {
     private route: ActivatedRoute,
     private produtoService: exibirFormService
   ) {
-    this.produtoCodigo = new Produto();
+    this.produtoCodigo = new Produtos();
     this.codigo = 0;
-    this.produto = new Produto();
+    this.produto = new Produtos();
   }
 
   ngOnInit(): void {
     this.getProdutos();
   }
     getProdutos() {
-      this.produtoService.getProdutos().subscribe((produto: Produto[]) => {
+      this.produtoService.getProdutos().subscribe((produto: Produtos[]) => {
         this.produtos = produto;
       });
     }
   
-    deleteProdutos(produto: Produto) {
+    deleteProdutos(produto: Produtos) {
       this.produtoService.deleteProdutos(produto).subscribe(() => {
         this.getProdutos();
       });
