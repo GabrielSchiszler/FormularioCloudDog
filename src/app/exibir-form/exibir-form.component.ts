@@ -29,16 +29,21 @@ export class ExibirFormComponent implements OnInit {
   ngOnInit(): void {
     this.getProdutos();
   }
-    getProdutos() {
-      this.produtoService.getProdutos().subscribe((produto: Produtos[]) => {
-        this.produtos = produto;
-      });
-    }
   
-    deleteProdutos(produto: Produtos) {
-      this.produtoService.deleteProdutos(produto).subscribe(() => {
-        this.getProdutos();
-      });
-    }
+  getProdutos() {
+    this.produtoService.getProdutos().subscribe((produto: Produtos[]) => {
+      this.produtos = produto;
+    });
   }
+
+  onEdit(id) {
+    this.router.navigate(['/produtos/', id], { relativeTo: this.route });
+  }
+
+  deleteProdutos(produto: Produtos) {
+    this.produtoService.deleteProdutos(produto).subscribe(() => {
+      this.getProdutos();
+    });
+  }
+}
 

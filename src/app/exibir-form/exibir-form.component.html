@@ -21,7 +21,6 @@
             </thead>
             <tbody>
                 <tr *ngFor="let produto of produtos">
-                    
                     <td>{{produto.id}}</td>
                     <td>{{produto.titulo}}</td>
                     <td>{{produto.preco | currency}}</td>
@@ -30,7 +29,7 @@
                     <td>
                         <span class="float-right">
                             <button type='button' class="btn btn-primary btn-sm"
-                                [routerLink]="['/produtos/', produto.id]">                           
+                                (click)="onEdit(produto.id)">                           
                                 ALTERAR
                             </button>
                             
