@@ -36,9 +36,10 @@
           Descrição é obrigatório.
         </div>
       </div>
-        <a routerLink="/produtos"><button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="editProduto(produto)" >Alterar</button></a>
-      <button type="reset" class="btn btn-primary">Limpar</button>
+        <a routerLink="/produtos"><button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="editProduto(produto)" >Alterar</button></a>     
+        <a routerLink="/produtos"><button type="button" class="btn btn-primary">Voltar</button></a>  
   </form>
+ 
   <br>
      <h3 *ngIf ="adicionado">{{confirmationString}} </h3>
   

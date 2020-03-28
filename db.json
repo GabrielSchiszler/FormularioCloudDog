@@ -1,4 +1,9 @@
 {
   "Produtos": [],
-  "Categorias": []
+  "Categorias": [
+    {
+      "categoria": "Teste",
+      "id": 1
+    }
+  ]
 }
