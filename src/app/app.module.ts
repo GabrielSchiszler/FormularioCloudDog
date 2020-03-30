@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule, ɵInternalFormsSharedModule}  from '@angular/forms';
+import { FormsModule, ɵInternalFormsSharedModule, ReactiveFormsModule}  from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroFormComponent } from './cadastro-form/cadastro-form.component';
@@ -123,11 +123,14 @@ const Material = [
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot    
+    RouterModule.forRoot   
     ([
       { path: '', component: CadastroFormComponent },
       { path: 'produtos', component: ExibirFormComponent }
-    ])
+    ]),
+    BrowserModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [exibirFormService,cadastroFormService],
   bootstrap: [AppComponent],

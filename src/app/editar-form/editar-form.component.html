@@ -1,45 +1,27 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <h1>CADASTRO DE PRODUTOS</h1>
-      <div class="form-group">
-        <label for="lbltitulo">Titulo: </label>
-        <input type="text" class="form-control" [(ngModel)]="produto.titulo" id="titulo" placeholder="Titulo" name="titulo" #titulo="ngModel" required>
-        <div *ngIf="!titulo.valid && titulo.touched"
-        class="alert alert-danger" role="alert">   
-          Nome é obrigatório.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="lblpreco">Preço: </label>
-        <input type="number" class="form-control" [(ngModel)]="produto.preco" id="preco" placeholder="Preço" name="preco=" #preco="ngModel" required>
-        <div *ngIf="!preco.valid && preco.touched"
-        class="alert alert-danger" role="alert">
-          Preço é obrigatório.
-        </div>
-      </div>  
-      <div class="form-group">
-        <label for="lblcategoria">Categoria: </label>
-        <select class="form-control" [(ngModel)]="produto.categoria" id="categoria" placeholder="Categoria" name="categoria" #categoria="ngModel" required>
-          <option *ngFor="let categoria of categorias" value={{categoria.categoria}}>
-            {{categoria.categoria}}
-          </option>
-        </select>
-        <div *ngIf="!categoria.valid && categoria.touched"
-        class="alert alert-danger" role="alert">
-          Categoria é obrigatório.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="lbldescricao">Descrição: </label>
-        <input type="text" class="form-control" [(ngModel)]="produto.descricao" id="descricao" placeholder="Descrição" name="descricao" #descricao="ngModel" required>
-        <div *ngIf="!descricao.valid && descricao.touched"
-        class="alert alert-danger" role="alert">
-          Descrição é obrigatório.
-        </div>
-      </div>
-        <a routerLink="/produtos"><button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="editProduto(produto)" >Alterar</button></a>     
-        <a routerLink="/produtos"><button type="button" class="btn btn-primary">Voltar</button></a>  
-  </form>
- 
-  <br>
-     <h3 *ngIf ="adicionado">{{confirmationString}} </h3>
-  
+<div>
+  <h1>Editar Produto</h1>
+</div>
+<form class="example-container" [formGroup]="productForm" (ngSubmit)="updateProduto(productForm.value)">
+  <label for="lbltitulo">Titulo: </label>
+  <div class="form-group">
+      <input type="text" name="titulo" class="form-control" placeholder="Nome do Produto" formControlName="titulo">
+  </div>
+
+  <label for="lblcategoria">Categoria: </label>
+  <div class="form-group">
+    <input type="text" name="categoria" class="form-control" placeholder="Categoria do Produto" formControlName="categoria" disabled>
+  </div>
+
+  <label for="lblpreco">Preço: </label>
+  <div class="form-group">
+      <input type="number" name="preco" class="form-control" placeholder="Preço do Produto" formControlName="preco">
+  </div>
+
+  <label for="lbldescricao">Descrição: </label>
+  <div class="form-group">
+      <input type="text" name="descricao" class="form-control" placeholder="Descrição do Produto" formControlName="descricao">
+  </div>
+
+      <button type="submit" [disabled]="!productForm.valid" color="primary" class="btn btn-primary" >Editar</button>
+      <button type="button" color="primary" class="btn btn-primary" routerLink="/produtos" >Voltar</button>
+      </form>

@@ -1,4 +1,17 @@
 {
-  "Produtos": [],
-  "Categorias": []
+  "Produtos": [
+    {
+      "titulo": "CloudDogAtualizado",
+      "preco": 999,
+      "categoria": "Estágio",
+      "descricao": "VagaAtualizado",
+      "id": 1
+    }
+  ],
+  "Categorias": [
+    {
+      "categoria": "Estágio",
+      "id": 1
+    }
+  ]
 }
