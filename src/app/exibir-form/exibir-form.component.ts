@@ -28,6 +28,7 @@ export class ExibirFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProdutos();
+    this.carregarProdutos();
   }
   
   getProdutos() {
@@ -35,7 +36,11 @@ export class ExibirFormComponent implements OnInit {
       this.produtos = produto;
     });
   }
-
+  public carregarProdutos(){
+    return this.service.listarProdutos().subscribe(res=>{
+      this.produtos = res;
+    })
+  }
   onEdit(id) {
     this.router.navigate(['/produtos/', id], { relativeTo: this.route });
   }

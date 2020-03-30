@@ -63,6 +63,7 @@ export class EditarFormComponent implements OnInit {
     });
   }
   updateProduto(form: NgForm) {
+    alert("PRODUTO ATUALIZADO COM SUCESSO");
     this.isLoadingResults = true;
     this.api.updateProduto(this.id, form)
       .subscribe(form => {

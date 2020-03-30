@@ -42,10 +42,10 @@ export class CadastroFormComponent implements OnInit {
     })
   }
   public salvar(){
+    alert('PRODUTO CADASTRADO COM SUCESSO!');
     this.service.gravar(this.produto).subscribe(res=>{
       this.adicionado = true;
       this.produto = new Produtos();
-      alert('PRODUTO CADASTRADO COM SUCESSO!');
     })
   } 
 }

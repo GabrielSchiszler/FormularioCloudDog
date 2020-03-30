@@ -24,7 +24,9 @@ export class exibirFormService{
   getProdutosID(id: number): Observable<Produtos> {
     return this.httpClient.get<Produtos>(this.url + '/' + id)
   }
-
+  listarProdutos():Observable<Produtos[]>{
+    return this.httpClient.get<Produtos[]>(this.url);
+}
   // salva um produto
   saveProdutos(produto: Produtos): Observable<Produtos> {
     return this.httpClient.post<Produtos>(this.url, JSON.stringify(produto), this.httpOptions)
